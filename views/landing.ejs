@@ -1,0 +1,61 @@
+<h1>Landing</h1>
+
+<h3>Login</h3>
+<p><%= loginErrors %></p>
+<form action="/sessions" method='post'>
+    <label for="">
+        Email
+        <input type="text" name='email'>
+    </label>
+    <label for="">
+        Password
+        <input type="text" name='password'>
+    </label>
+    <input type="submit" value='Login'>
+</form>
+
+<h3>Register</h3>
+<% if (registrationSuccess.length > 0) { %>
+    <% if (registrationSuccess[0]){ %>
+        <%= registrationSuccess[0] %>
+    <% } %>  
+<% } %>
+<form action="/users" method='post'>
+    <% if (registrationErrors.length > 0) { %>
+        <% if (registrationErrors[0].first_name){ %>
+            <%= registrationErrors[0].first_name.message %>
+        <% } %>  
+    <% } %>
+    <label for="">
+        First Name
+        <input type="text" name='first_name' value="<%= formData.first_name %>">
+    </label>
+    <% if (registrationErrors.length > 0) { %>
+        <% if (registrationErrors[0].last_name){ %>
+            <%= registrationErrors[0].last_name.message %>
+        <% } %>  
+    <% } %>
+    <label for="">
+        Last Name
+        <input type="text" name='last_name' value="<%= formData.last_name %>">
+    </label>
+    <% if (registrationErrors.length > 0) { %>
+        <% if (registrationErrors[0].email){ %>
+            <%= registrationErrors[0].email.message %>
+        <% } %>  
+    <% } %>
+    <label for="">
+        Email
+        <input type="text" name='email' value="<%= formData.email %>">
+    </label>
+    <% if (registrationErrors.length > 0) { %>
+        <% if (registrationErrors[0].password){ %>
+            <%= registrationErrors[0].password.message %>
+        <% } %>  
+    <% } %>
+    <label for="">
+        Password
+        <input type="text" name='password' value="<%= formData.password %>">
+    </label>
+    <input type="submit" value='Register'>
+</form>
